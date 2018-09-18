@@ -9,12 +9,16 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 
 //components
 import {BannerComponent} from './components/banner/app.banner.component';
+import {FooterComponent} from './components/footer/app.footer.component';
+import {GalleryComponent} from './components/gallery/app.gallery.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    BannerComponent
+    BannerComponent,
+    FooterComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
