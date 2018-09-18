@@ -449,7 +449,7 @@
 
 /* Contact */
 
-	#contact {
+	#contact [_ngcontent-c1]{
 		display: -ms-flexbox;
 		-ms-flex-pack: justify;
 		display: -moz-flex;
@@ -467,11 +467,11 @@
 		background: #ececec;
 	}
 
-		#contact form {
+		#contact [_ngcontent-c1] form {
 			margin: 0;
 		}
 
-		#contact .icons {
+		#contact [_ngcontent-c1] .icons {
 			margin-bottom: 1em;
 		}
 

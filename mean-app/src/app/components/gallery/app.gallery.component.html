@@ -6,29 +6,8 @@
                 <h2>What's New</h2>
             </header>
             <div class="content">
-                <div class="media">
-                    <a href="" style="outline: 0px;"><img src="../src/assets/images/thumbs/01.jpg" alt="" title=""></a>
-                </div>
-                <div class="media">
-                    <a href="" style="outline: 0px;"><img src="../src/assets/images/thumbs/05.jpg" alt="" title=""></a>
-                </div>
-                <div class="media">
-                    <a href="" style="outline: 0px;"><img src="../src/assets/images/thumbs/09.jpg" alt="" title=""></a>
-                </div>
-                <div class="media">
-                    <a href="" style="outline: 0px;"><img src="../src/assets/images/thumbs/02.jpg" alt="" title=""></a>
-                </div>
-                <div class="media">
-                    <a href="" style="outline: 0px;"><img src="../src/assets/images/thumbs/06.jpg" alt="" title=""></a>
-                </div>
-                <div class="media">
-                    <a href="" style="outline: 0px;"><img src="../src/assets/images/thumbs/10.jpg" alt="" title=""></a>
-                </div>
-                <div class="media">
-                    <a href="" style="outline: 0px;"><img src="../src/assets/images/thumbs/03.jpg" alt="" title=""></a>
-                </div>
-                <div class="media">
-                    <a href="" style="outline: 0px;"><img src="../src/assets/images/thumbs/07.jpg" alt="" title=""></a>
+                <div class="media" *ngFor = "let photo of photos" id="{{photo.id}}">
+                    <a href="{{photo.fullURL}}" style="outline: 0px;"><img src="{{photo.thumbURL}}" alt="" title= "{{photo.caption}}"></a>
                 </div>
             </div>
             <footer>
