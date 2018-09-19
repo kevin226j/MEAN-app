@@ -1,0 +1,13 @@
+.has-error {
+    border: 1px solid #fc2622;
+}
+.errormsg {
+    color : #fc2622;
+    padding : 0;
+    border :0;
+    margin : 0;
+    position : absolute;
+}
+.displayNone {
+    display: none;
+}

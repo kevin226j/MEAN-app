@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, FormBuilder} from '@angular/forms';
+import {FormGroup, FormControl, FormBuilder, Validators, PatternValidator} from '@angular/forms';
 
  
 @Component({
@@ -16,16 +16,21 @@ export class ContactComponent{
   
   private buildForm () {
     this.contactForm = this.formBuilder.group({
-      name : this.formBuilder.control(null),
-      email : this.formBuilder.control(null),
-      message : this.formBuilder.control(null)
+      name : this.formBuilder.control(null,Validators.required),
+      email : this.formBuilder.control(null,[
+        Validators.required,
+        Validators.pattern("[^ @]*@[^ @]*")
+      ]),
+      message : this.formBuilder.control(null,Validators.required)
     });
   }
 
+
+  //RESET
   onResetForm() {
     this.contactForm.reset();
   }
-
+  //SUBMIT
   onSubmitForm(e){
     e.preventDefault();
     console.log(this.contactForm.value);
