@@ -16,20 +16,23 @@
     <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
   </ul>
 </div>
+
+
+<!-- FORM -->
 <div class="column">
   <h3>Get in Touch</h3>
-  <form action="#" method="post">
+  <form [formGroup] = "contactForm" (ngSubmit) = "onSubmitForm($event)">
     <div class="field half first">
       <label for="name">Name</label>
-      <input name="name" id="name" type="text" placeholder="Name">
+      <input formControlName = "name" name="name" id="name" type="text" placeholder="Name">
     </div>
     <div class="field half">
       <label for="email">Email</label>
-      <input name="email" id="email" type="email" placeholder="Email">
+      <input formControlName = "email" name="email" id="email" type="email" placeholder="Email">
     </div>
     <div class="field">
       <label for="message">Message</label>
-      <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+      <textarea formControlName = "message" name="message" id="message" rows="6" placeholder="Message"></textarea>
     </div>
     <ul class="actions">
       <li><input value="Send Message" class="button" type="submit"></li>

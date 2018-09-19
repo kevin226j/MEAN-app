@@ -1,6 +1,26 @@
-
 <!-- TODO: ADD PORTFOLIO STUFF -->
+<header id="header">
+  <div>Snapshot <span>by TEMPLATED</span></div>
+</header>
 
-<section id="contact">  
-      <app-contact-component></app-contact-component>
+<section id="galleries">
+  <div class="gallery">
+    <header>
+      <h1>Portfolio</h1>
+      <ul class="tabs">
+        <!-- TODO : Add Database of different categories -->
+        <li><a href="#" data-tag="all" class="button active">All</a></li>
+        <li><a href="#" data-tag="people" class="button">People</a></li>
+        <li><a href="#" data-tag="place" class="button">Places</a></li>
+        <li><a href="#" data-tag="thing" class="button">Things</a></li>
+      </ul>
+    </header>
+
+    <app-gallery></app-gallery>
+
+  </div>
+</section>
+
+<section id="contact">
+  <app-contact-component></app-contact-component>
 </section>

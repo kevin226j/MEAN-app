@@ -1,17 +1,7 @@
-<section id="galleries">
-
 <!-- // Photo Galleries  -->
-        <div class="gallery">
-            <header class="special">
-                <h2>What's New</h2>
-            </header>
-            <div class="content">
-                <div class="media" *ngFor = "let photo of photos" id="{{photo.id}}">
-                    <a href="{{photo.fullURL}}" style="outline: 0px;"><img src="{{photo.thumbURL}}" alt="" title= "{{photo.caption}}"></a>
-                </div>
-            </div>
-            <footer>
-                <a href="../src/assets/gallery.html" class="button big">Full Gallery</a>
-            </footer>
-        </div>
-</section> 
+
+<div class="content">
+  <div class="media all people" *ngFor="let photo of photos" id="{{photo.id}}">
+    <a href="{{photo.fullURL}}" style="outline: 0px;"><img src="{{photo.thumbURL}}" alt="" title="{{photo.caption}}"></a>
+  </div>
+</div>
