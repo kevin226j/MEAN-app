@@ -3,7 +3,6 @@ import mongoose, { Collection } from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const DemoSchema = new Schema({
-    
     thumbURL : {
         type: String,
         required: true
