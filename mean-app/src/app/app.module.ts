@@ -1,14 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms'
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import { HttpClientModule } from '@angular/common/http'; 
+//import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 // views
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {GenericComponent} from './generic/generic.component';
-import {PortfolioComponent} from './portfolio/portfolio.component';
+import {DashboardComponent} from './views/dashboard/dashboard.component';
+import {GenericComponent} from './views/generic/generic.component';
+import {PortfolioComponent} from './views/portfolio/portfolio.component';
+
+//services
+import {DemoService} from './services/api/demo/demo.service';
 
 //components
 import {BannerComponent} from './components/banner/app.banner.component';
@@ -33,8 +39,10 @@ import {ContactComponent} from './components/contact/app.contact.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DemoService],
   bootstrap: [AppComponent],
 })
 export class AppModule { 

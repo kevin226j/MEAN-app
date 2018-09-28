@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {DashboardComponent} from "../app/dashboard/dashboard.component";
-import {GenericComponent} from "../app/generic/generic.component";
-import {PortfolioComponent} from "../app/portfolio/portfolio.component";
+import {DashboardComponent} from "../app/views/dashboard/dashboard.component";
+import {GenericComponent} from "../app/views/generic/generic.component";
+import {PortfolioComponent} from "../app/views/portfolio/portfolio.component";
 
 const routes: Routes = [
   {path : '', redirectTo: '/dashboard', pathMatch : 'full'},
