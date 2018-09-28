@@ -1,6 +1,14 @@
-// const routes = required('express').Router();
-// const demoController = require('./demoController');
+const router = require('express').Router();
+const demoController = require('./demoController');
 
-// routes.get('', demoController.get);
+router.route('/')
+    .get(demoController.get)
+    .post(demoController.post);
 
-// module.exports = routes;
+router.route('/:id')
+    .get(demoController.getById)
+    .put(demoController.put)
+    .delete(demoController._delete);    
+
+module.exports = router;
+

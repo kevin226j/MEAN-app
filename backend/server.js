@@ -30,10 +30,9 @@ app.use((req, res, next)=>{
     next();
 });
 
-
-
 //router
-router(app);
+app.use(router);
+
 
 app.listen(PORT,()=>{
     console.log(`server running on port: ${PORT}`);
