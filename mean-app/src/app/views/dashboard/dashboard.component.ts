@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {DemoService} from '../../services/api/demo/demo.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import {Idemo} from '../../services/api/demo/IdemoEntity';
  
 @Component({
   selector: 'app-dashboard',
@@ -9,25 +6,7 @@ import {Idemo} from '../../services/api/demo/IdemoEntity';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  constructor(private demoService : DemoService, private route: ActivatedRoute) {}
-  
-  list:any = [];
-
-  ngOnInit() {
-    this.getData();
-    this.demoService.GetById('5bae7e87fe78e484f297c6ef')
-      .subscribe(data => console.log(data))
-  }
-  
-  getData () : void {
-    this.list = [];
-    this.demoService.GetAll()
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.list = data;
-      });
-  }
-
-  
+  constructor() {}
+  ngOnInit() {}  
 
 }

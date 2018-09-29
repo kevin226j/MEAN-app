@@ -8,7 +8,7 @@ import router from './src/routes/index';
 const app = express();
 const PORT = 3000;
 
-//mongoose connection to mongoDB
+//mongoose connection to local mongoDB
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/portfolio_test', {useNewUrlParser: true}, (err)=>{
 

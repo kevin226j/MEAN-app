@@ -12,7 +12,19 @@ export class DemoService extends RESTService <Idemo>{
     constructor(private http: HttpClient){
         super(http,'/demo')
     }
-    //TODO: implement authorization service and add other services here...or maybe in the constructor/abstract class?
+    //TODO: implement authorization service and add other services here...or maybe in the constructor/abstract class....or ontop of the constructor?
+
+    /*
+        something like this.... 
+        public getAll() {
+            if(authorized){
+                this.getAll()
+            } else {
+                throw error(message: not authorized);
+            }
+        }
+    */
+
 }
 
 
