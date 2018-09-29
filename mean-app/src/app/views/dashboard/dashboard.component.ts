@@ -15,15 +15,19 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
+    this.demoService.GetById('5bae7e87fe78e484f297c6ef')
+      .subscribe(data => console.log(data))
   }
-
+  
   getData () : void {
     this.list = [];
-    this.demoService.getDemoData()
+    this.demoService.GetAll()
       .subscribe((data: {}) => {
         console.log(data);
         this.list = data;
       });
   }
+
+  
 
 }

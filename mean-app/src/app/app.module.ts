@@ -14,6 +14,7 @@ import {GenericComponent} from './views/generic/generic.component';
 import {PortfolioComponent} from './views/portfolio/portfolio.component';
 
 //services
+import {RESTService} from './services/rest.service';
 import {DemoService} from './services/api/demo/demo.service';
 
 //components
