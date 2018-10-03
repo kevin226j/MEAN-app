@@ -16,6 +16,7 @@ import {PortfolioComponent} from './views/portfolio/portfolio.component';
 //services
 import {RESTService} from './services/rest.service';
 import {DemoService} from './services/api/demo/demo.service';
+import {GmailService} from './services/api/gmail/gmail.service';
 
 //components
 import {BannerComponent} from './components/banner/app.banner.component';
@@ -43,7 +44,7 @@ import {ContactComponent} from './components/contact/app.contact.component';
     HttpModule,
     HttpClientModule
   ],
-  providers: [DemoService],
+  providers: [DemoService,GmailService],
   bootstrap: [AppComponent],
 })
 export class AppModule { 

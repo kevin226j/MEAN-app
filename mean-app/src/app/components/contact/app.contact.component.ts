@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators, PatternValidator} from '@angular/forms';
 
+import {GmailService} from '../../services/api/gmail/gmail.service';
+import {IEmail} from '../../services/api/gmail/IEmailEntity';
+
  
 @Component({
   selector: 'app-contact-component',
@@ -9,8 +12,9 @@ import {FormGroup, FormControl, FormBuilder, Validators, PatternValidator} from 
 })
 export class ContactComponent{
   contactForm : FormGroup;
+  data = {} as IEmail;
 
-  constructor(private formBuilder : FormBuilder) { 
+  constructor(private formBuilder : FormBuilder, private gmailService : GmailService) { 
     this.buildForm();
   }
   
@@ -25,7 +29,6 @@ export class ContactComponent{
     });
   }
 
-
   //RESET
   onResetForm() {
     this.contactForm.reset();
@@ -33,7 +36,11 @@ export class ContactComponent{
   //SUBMIT
   onSubmitForm(e){
     e.preventDefault();
-    console.log(this.contactForm.value);
+    this.data.name = this.contactForm.value.name;
+    this.data.email = this.contactForm.value.email;
+    this.data.message = this.contactForm.value.message;
+    
+    this.gmailService.sendEmailtoHost(this.data)
     this.onResetForm();
   }
 }

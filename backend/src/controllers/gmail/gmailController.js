@@ -17,14 +17,15 @@ export const sendEmail = (req, res, next) => {
             accessToken: process.env.GMAILAPI_ACCESS_TOKEN
         }
     });
-    console.log(transporter.options);
+    console.log(req.body);
+    console.log(req.type);
     //Render email template w/ EJS
-    res.render('email', null, (err, data)=> {
+    res.render('email', {message : req.body.message}, (err, data)=> {
         if (err) {
             console.log(err);
         } else {
             let mail = {
-                from: `John Doe <${process.env.GMAIL_USERNAME}>`, // sender address
+                from: `${req.body.name} <${req.body.email}>`, // sender address
                 to: 'supercoolemail@mailinator.com', // list of receivers
                 subject: 'Hello world! ✔', // Subject line
                 html: data // html body
