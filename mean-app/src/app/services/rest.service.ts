@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {of ,Observable, throwError} from 'rxjs';
 import { map, catchError, tap} from "rxjs/operators";
+import {ErrorResponseHandler} from './responses/errorReponseHandler';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,37 +19,34 @@ export abstract class RESTService <T> {
 
     public GetAll() : Observable<T[]> {
         return this._http.get<T[]>(this.baseURL+this.actionURL).pipe(
-            map(this.extractData)
+            map(this.extractData),
+            catchError(ErrorResponseHandler<T>('GetAll'))
         )
     }
 
     public GetById(id:string) : Observable<T> {
         return  this._http.get<T>(this.baseURL+this.actionURL+`/${id}`).pipe(
-            map(this.extractData)
+            map(this.extractData),
+            catchError(ErrorResponseHandler<T>('GetById'))
         )
     }
 
-    public Post (payload: T){
+    public Post (payload: T) : Observable<T>{
         return this._http.post<T>(this.baseURL+this.actionURL, payload, httpOptions).pipe(
-            tap((data) => {}),
-            catchError(this.handleError<any>('Post')),
-        ).subscribe()
+            catchError(ErrorResponseHandler<T>('Post'))
+        )
     }
 
-    //TODO: UPDATE AND DELETE service
+    public Delete (id: string) : Observable <T> {
+        return this._http.delete<T>(this.baseURL+this.actionURL+`/${id}`, httpOptions).pipe(
+            catchError(ErrorResponseHandler<T>('Delete'))
+        )
+    }
 
-    //TODO: add error/catch handler
-    private handleError<T> (operation = 'operation', result?:T){
-        return (err:any) : Observable <T> => {
-            console.log('entered error');
-            //TODO: send error to remote logging system..
-            console.log(err);
-            //TODO: make error readable for user
-            console.log(`${operation} failed: ${err.message}`);
-            //let app continue, return empty result.
-            return of(result as T);
-        }
+    
+    public Put (id: string, payload: T) : Observable <any> {
+        return this._http.put(this.baseURL+this.actionURL+`/${id}`, payload, httpOptions).pipe(
+            catchError(ErrorResponseHandler<T>('Put'))
+        )
     }
 }
-
-//TODO: add error/catch handler

@@ -28,7 +28,7 @@ export const put = (req, res) => {
 
 //DELETE
 export const _delete = (req, res) => {
-    Demo.deleteOnde({_id: req.params.id}, (err,data) => ResponseHandler(res, err, data, 'DELETE'));
+    Demo.deleteOne({_id: req.params.id}, (err,data) => ResponseHandler(res, err, data, 'DELETE'));
 }
 
 

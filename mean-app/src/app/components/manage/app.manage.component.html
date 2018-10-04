@@ -1,0 +1,45 @@
+<header id="header">
+  <div>Snapshot <span>by TEMPLATED</span></div>
+</header>
+<section id="galleries">
+  <div class="gallery">
+    <header>
+      <h1>Manage Photos</h1>
+    </header>
+
+    <!-- Form -->
+    <div class="container">
+      <div class="column1">
+        <form [formGroup]="formData" id="form" (ngSubmit)="onSubmit()">
+          <input formControlName="fullURL" type="text" placeholder="Full Image URL">
+          <input formControlName="thumbURL" type="text" placeholder="Thumbnail URL">
+          <textarea formControlName="caption" type="text" placeholder="Caption"></textarea>
+          <input id="submit" type="submit" value="Submit!">
+        </form>
+      </div>
+
+      <!-- List -->
+      <div class="column2">
+        <div class="card" *ngFor="let photo of photos">
+          <img src="{{photo.thumbURL}}" alt="" title="{{photo.caption}}" style="width:100%">
+          <div class="container buttons">
+            <button mat-raised-button color="primary" (click)="editPhoto(photo._id)"> Edit</button>
+            <button mat-raised-button color="warn" [swal]="deleteSwal"> Delete</button>
+
+            <!-- Sweet Alert Modal: Delete -->
+            <swal #deleteSwal title="Are you sure want to delete this?" type="warning" [options]="{ showCancelButton: true,  showConfirmButton: true, confirmButtonText: 'Yes, delete!',  confirmButtonColor: '#DD6B55'}"
+              (confirm)="deletePhoto(photo._id)">
+            </swal>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Sweet Alert Modal: Success -->
+      <swal #submitSwal title="Success!" type="success" [options]="{ showCancelButton: false, showConfirmButton: false, timer: 2000}">
+      </swal>
+
+    </div>
+
+  </div>
+</section>

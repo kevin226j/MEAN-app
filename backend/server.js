@@ -12,7 +12,7 @@ const PORT = 3000;
 
 //mongoose connection to local mongoDB
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/portfolio_test', {useNewUrlParser: true}, (err)=>{
+mongoose.connect(`mongodb://localhost:27017/${process.env.DB_NAME}`, {useNewUrlParser: true}, (err)=>{
 
 });
 //TODO: connect to external database (mlab) after the initial test is complete. 
@@ -28,6 +28,7 @@ app.set('views', './src/views');
 //CORS
 app.use((req, res, next)=>{
     res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept, Authorization"
