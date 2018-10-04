@@ -23,12 +23,14 @@
         <div class="card" *ngFor="let photo of photos">
           <img src="{{photo.thumbURL}}" alt="" title="{{photo.caption}}" style="width:100%">
           <div class="container buttons">
-            <button mat-raised-button color="primary" (click)="editPhoto(photo._id)"> Edit</button>
-            <button mat-raised-button color="warn" [swal]="deleteSwal"> Delete</button>
+            <button mat-raised-button color="primary" (click)="onClick(photo._id,'edit')"> Edit</button>
+            <button mat-raised-button color="warn" (click)="onClick(photo._id,'delete')"> Delete</button>
 
             <!-- Sweet Alert Modal: Delete -->
-            <swal #deleteSwal title="Are you sure want to delete this?" type="warning" [options]="{ showCancelButton: true,  showConfirmButton: true, confirmButtonText: 'Yes, delete!',  confirmButtonColor: '#DD6B55'}"
-              (confirm)="deletePhoto(photo._id)">
+            <swal #deleteSwal 
+            title="Are you sure want to delete this?" 
+            type="warning" 
+            [options]="{ showCancelButton: true,  showConfirmButton: true, confirmButtonText: 'Yes, delete!',  confirmButtonColor: '#DD6B55'}">
             </swal>
           </div>
         </div>

@@ -17,8 +17,6 @@ export const sendEmail = (req, res, next) => {
             accessToken: process.env.GMAILAPI_ACCESS_TOKEN
         }
     });
-    console.log(req.body);
-    console.log(req.type);
     //Render email template w/ EJS
     res.render('email', {message : req.body.message}, (err, data)=> {
         if (err) {

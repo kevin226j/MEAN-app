@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators, PatternValidator} from '@angular/forms';
+import { SwalComponent } from '@toverux/ngx-sweetalert2';
 
 import {GmailService} from '../../services/api/gmail/gmail.service';
 import {IEmail} from '../../services/api/gmail/IEmailEntity';
@@ -11,6 +12,9 @@ import {IEmail} from '../../services/api/gmail/IEmailEntity';
   styleUrls: [ './app.contact.component.css' ]
 })
 export class ContactComponent{
+
+  @ViewChild('messageSentSwal') private messageSentSwal: SwalComponent;
+
   contactForm : FormGroup;
   data = {} as IEmail;
 
@@ -18,7 +22,7 @@ export class ContactComponent{
     this.buildForm();
   }
   
-  private buildForm () {
+  private buildForm () : void {
     this.contactForm = this.formBuilder.group({
       name : this.formBuilder.control(null,Validators.required),
       email : this.formBuilder.control(null,[
@@ -30,17 +34,19 @@ export class ContactComponent{
   }
 
   //RESET
-  onResetForm() {
+  private onResetForm() {
     this.contactForm.reset();
   }
   //SUBMIT
-  onSubmitForm(e){
+  private onSubmitForm(e) : void{
     e.preventDefault();
     this.data.name = this.contactForm.value.name;
     this.data.email = this.contactForm.value.email;
     this.data.message = this.contactForm.value.message;
     
-    this.gmailService.sendEmailtoHost(this.data)
+    this.gmailService.sendEmailtoHost(this.data).subscribe(()=>{
+      this.messageSentSwal.show();
+    })
     this.onResetForm();
   }
 }

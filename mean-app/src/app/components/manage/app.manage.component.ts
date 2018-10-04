@@ -41,14 +41,14 @@ export class ManageComponent{
   ngOnInit() {
     this.getData();
   }
-  
-  onResetForm() {
+  //Reset Form
+  private onResetForm(): void {
     setTimeout(()=> {
       this.formData.reset();
     }, 200)
   }
-
-  getData() : void {
+  //GET method
+  private getData() : void {
     this.photos = [];
     setTimeout(()=>{
       this.demoService.GetAll().subscribe((data: {}) => {
@@ -57,22 +57,25 @@ export class ManageComponent{
     }, 100)
   }
 
-  deletePhoto(id : string){
-    this.demoService.Delete(id).subscribe()
-    setTimeout(()=>{
-      this.getData();
-    }, 1000);
-  }
-
-  editPhoto(id :string){
-    this.demoService.GetById(id).subscribe(
-      data => this.formData.patchValue(data)
-    )
-    this.currentId = id;
+  // DELETE and re-populate form with GET BY ID - method determined by passed in 'action';
+  private onClick(id: string, action: string) : void {
+    if (action === 'edit'){
+      this.demoService.GetById(id).subscribe(
+        data => this.formData.patchValue(data)
+      )
+      this.currentId = id;
+    } else if (action === 'delete'){
+        this.deleteSwal.show().then(res => {
+          if (res.value){
+            this.demoService.Delete(id).subscribe();
+            this.getData();
+          }
+        });
+    }
   }
 
 // POST and PUT - method determined by this.currentId;
-  onSubmit() {
+  private onSubmit() : void {
     if (this.currentId !== undefined) {
       this.demoService.Put(this.currentId, this.formData.value).subscribe(
         (success) => {
