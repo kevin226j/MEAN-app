@@ -11,9 +11,21 @@
     <div class="container">
       <div class="column1">
         <form [formGroup]="formData" id="form" (ngSubmit)="onSubmit()">
-          <input formControlName="fullURL" type="text" placeholder="Full Image URL">
-          <input formControlName="thumbURL" type="text" placeholder="Thumbnail URL">
-          <textarea formControlName="caption" type="text" placeholder="Caption"></textarea>
+
+          <div class="field">
+            <label>Full Image URL: </label>
+            <input formControlName="fullURL" type="text" placeholder="Full Image URL">
+          </div>
+
+          <div class="field">
+            <label>Thumb Image URL: </label>
+            <input formControlName="thumbURL" type="text" placeholder="Thumbnail URL">
+          </div>
+
+          <div class="field">
+            <label>Caption: </label>
+            <textarea formControlName="caption" type="text" placeholder="Caption"></textarea>
+          </div>
           <input id="submit" type="submit" value="Submit!">
         </form>
       </div>
