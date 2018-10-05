@@ -26,12 +26,6 @@ npm start
 
 The server will run on port 3000.
 
-Then fire up MongoDB ()
-
-```
-mongod
-```
-
 The server persists using a Mongo database, connected through http://localhost:27017
 
 
