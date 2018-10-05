@@ -10,11 +10,15 @@ import router from './src/routes/index';
 const app = express();
 const PORT = 3000;
 
-//mongoose connection to local mongoDB
-mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://localhost:27017/${process.env.DB_NAME}`, {useNewUrlParser: true}, (err)=>{
+const mongodbUri = 'mongodb://testing_mlab1:testing_mlab1@ds123783.mlab.com:23783/photos_test' //For local use -> `mongodb://localhost:27017/${process.env.LOCAL_DB_NAME}`
 
-});
+//mongoose connection either for local mongoDB or mongoDB hosting: mLab
+mongoose.Promise = global.Promise;
+mongoose.connect(mongodbUri, {useNewUrlParser: true,})
+mongoose.connection.once('open', ()=>{console.log('mLab database is now connected')});
+
+
+
 //TODO: connect to external database (mlab) after the initial test is complete. 
 
 //start middle-ware
