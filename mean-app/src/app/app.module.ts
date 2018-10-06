@@ -20,6 +20,7 @@ import {AdminComponent} from './views/admin/admin.component';
 import {RESTService} from './services/rest.service';
 import {DemoService} from './services/api/demo/demo.service';
 import {GmailService} from './services/api/gmail/gmail.service';
+import {UploadService} from './services/api/upload/uploadService';
 
 //components
 import {BannerComponent} from './components/banner/app.banner.component';
@@ -28,6 +29,7 @@ import {GalleryComponent} from './components/gallery/app.gallery.component';
 import {AboutComponent} from './components/about/app.about.component';
 import {ContactComponent} from './components/contact/app.contact.component';
 import {ManageComponent} from './components/manage/app.manage.component';
+import {UploadComponent} from './components/upload/app.upload.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import {ManageComponent} from './components/manage/app.manage.component';
     GalleryComponent,
     AboutComponent,
     ContactComponent,
-    ManageComponent
+    ManageComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,

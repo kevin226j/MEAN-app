@@ -3,8 +3,8 @@ import {of ,Observable, throwError} from 'rxjs';
 import { map, catchError, tap} from "rxjs/operators";
 import {ErrorResponseHandler} from './responses/errorReponseHandler';
 
-const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+let httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': ['application/json'] })
 };
 
 export abstract class RESTService <T> {
@@ -31,7 +31,9 @@ export abstract class RESTService <T> {
         )
     }
 
-    public Post (payload: T) : Observable<T>{
+    public Post (payload: T, headers?:string) : Observable<T>{
+        if(headers === 'none') 
+            httpOptions = undefined; 
         return this._http.post<T>(this.baseURL+this.actionURL, payload, httpOptions).pipe(
             catchError(ErrorResponseHandler<T>('Post'))
         )

@@ -26,7 +26,12 @@
             <label>Caption: </label>
             <textarea formControlName="caption" type="text" placeholder="Caption"></textarea>
           </div>
-          <input id="submit" type="submit" value="Submit!">
+
+          <div class="field">
+            <label>Upload Image: </label>
+            <app-upload-component></app-upload-component>
+          </div>
+          <input id="submit" type="submit" value="Submit!" style ="width:100%">
         </form>
       </div>
 
