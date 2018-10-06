@@ -26,7 +26,9 @@ npm start
 
 The server will run on port 3000.
 
-The server persists using a Mongo database, connected through http://localhost:27017
+The server persists using a Mongo database from mLab
+
+For example of CRUD Operations, navigate to  http://localhost:4200/admin/
 
 
 
@@ -57,7 +59,11 @@ template: https://templated.co/
 images: https://unsplash.com/
 
 
-# Notes/TODOs
+# Notes
+Email service will only run locally.
+  
+# TODOs
+Itegrate project with AWS S3 to store image files.
 
 Form validaitons found throughout project need refactoring and proper implementation. A lot of items can be modularized.
 
