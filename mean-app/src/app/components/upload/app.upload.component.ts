@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators, PatternValidator} from '@angular/forms';
 import { SwalComponent } from '@toverux/ngx-sweetalert2';
 import { UploadService} from '../../services/api/upload/uploadService';
+import { InputDecorator } from '@angular/core/src/metadata/directives';
 
 
 class imageSnippet {
@@ -15,7 +16,12 @@ class imageSnippet {
 })
 export class UploadComponent{
 
+  @ViewChild('successAlertSwal') private successAlertSwal: SwalComponent;
+  @ViewChild('errorAlertSwal') private errorAlertSwal: SwalComponent;
+  
   selectedFile: imageSnippet;
+  	
+  addTaskValue: string = "";
 
   constructor(private uploadService : UploadService) {   
   }
@@ -28,14 +34,17 @@ export class UploadComponent{
 
     reader.addEventListener('load', (e : any)=>{
       this.selectedFile = new imageSnippet(e.target.result, file);
+      console.log(this.selectedFile);
       this.uploadService.upload(this.selectedFile.file).subscribe(
         (res)=>{
-
+          //ALERTS SHOULD APPEAR BASED ON REST.SERVICE.TS
+          this.successAlertSwal.show();
         },
         (err)=>{
-
+          this.errorAlertSwal.show();
         }
       )
+      this.addTaskValue = "";
     })
 
     reader.readAsDataURL(file);

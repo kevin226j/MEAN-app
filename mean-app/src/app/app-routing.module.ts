@@ -7,7 +7,7 @@ import {PortfolioComponent} from "../app/views/portfolio/portfolio.component";
 import {AdminComponent} from '../app/views/admin/admin.component';
 
 const routes: Routes = [
-  {path : '', redirectTo: '/dashboard', pathMatch : 'full'},
+  {path : '', redirectTo: '/dashboard', pathMatch : 'full'}, 
   {path: 'dashboard', component: DashboardComponent},
   {path: 'generic', component: GenericComponent},
   {path: 'portfolio', component: PortfolioComponent},

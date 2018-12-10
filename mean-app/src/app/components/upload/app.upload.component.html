@@ -1,12 +1,15 @@
-<input 
-#imageInput
-type="file" 
-accept="image/*"
-(change) = "processFile(imageInput)">
+<input #imageInput type="file" accept="image/*" (change)="processFile(imageInput)" [(ngModel)]="addTaskValue">
 
-<div *ngIf = "selectedFile" class = 'image-preview-container'>
-  <div class='image-preview'
-  [ngStyle] = "{'background-image': 'url(' + selectedFile.src + ')'}">
-
+<div *ngIf="selectedFile" class='image-preview-container'>
+  <div class='image-preview' [ngStyle]="{'background-image': 'url(' + selectedFile.src + ')'}">
   </div>
 </div>
+
+  <!-- Sweet Alert Modal: Success -->
+<swal #successAlertSwal title="Successfully Uploaded!" type="success" [options]="{ showCancelButton: false, showConfirmButton: false, timer: 2000}">
+</swal>
+
+<!-- Sweet Alert Modal: Error -->
+<swal #errorAlertSwal title="Upload Failed!" type="error" [options]="{ showCancelButton: false, showConfirmButton: false, timer: 2000}">
+</swal>
+

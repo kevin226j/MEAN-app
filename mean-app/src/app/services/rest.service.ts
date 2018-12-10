@@ -30,7 +30,7 @@ export abstract class RESTService <T> {
             catchError(ErrorResponseHandler<T>('GetById'))
         )
     }
-
+    
     public Post (payload: T, headers?:string) : Observable<T>{
         if(headers === 'none') 
             httpOptions = undefined; 
@@ -45,7 +45,6 @@ export abstract class RESTService <T> {
         )
     }
 
-    
     public Put (id: string, payload: T) : Observable <any> {
         return this._http.put(this.baseURL+this.actionURL+`/${id}`, payload, httpOptions).pipe(
             catchError(ErrorResponseHandler<T>('Put'))

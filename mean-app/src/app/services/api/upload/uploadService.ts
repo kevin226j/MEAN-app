@@ -11,7 +11,9 @@ export class UploadService extends RESTService <any>{
     }
     public upload (data : File) : Observable <any>{
         const formData = new FormData();
+
         formData.append('image', data); //append fieldname
+
         return this.Post(formData, 'none');
     }
 }
